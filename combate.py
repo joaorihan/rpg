@@ -14,11 +14,15 @@ inimigos = {
 
 def encontrou_inimigo_fraco(personagem):
     import random
-    
-    # ataque_jogador = (personagem["habilidade"] + (random.randint(0,6)+random.randint(0,6)))
-    inimigo_atual = random.choice(inimigos)
+    inimigos = {
+        "ORC": {"habilidade": 7, "energia": 7},
+                "Golem": {"habilidade": 5, "energia": 12}
+    }
 
-    if inimigo_atual[0] == "ORC":
+    inimigo_atual = inimigos["ORC"]
+    print(inimigo_atual)
+
+    if "ORC" in inimigo_atual:
         print("Você encontrou um Orc!")
         print(f'\nOrc\nHabilidade{(inimigos["ORC"]["habilidade"])}\nEnergia{(inimigos["ORC"]["energia"])}')
         resposta = input("Você deseja Lutar ou tentar correr? (Lutar/Correr)")
@@ -44,6 +48,10 @@ def encontrou_inimigo_fraco(personagem):
 
 
 def ataques(personagem):
+    inimigos = {
+    "ORC" : {"habilidade" : 7, 
+             "energia" : 7}
+    }
     import random
     print("Você e seu inimigo trocam golpes.")
     ataque_inimigo = (inimigos["ORC"]["habilidade"] + (random.randint(1,6)+random.randint(1,6)))

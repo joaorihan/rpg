@@ -17,5 +17,6 @@ while jogando:
     input()
 
     inimigo_atual = combate.encontrou_inimigo_fraco(personagem)
+    
 print("Fim do Jogo")    
     
