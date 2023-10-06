@@ -3,32 +3,32 @@ def encontrou_inimigo_fraco(personagem):
     import random
     inimigos = {
         "ORC": {"habilidade": 7, "energia": 7},
-                "Golem": {"habilidade": 5, "energia": 12}
+                "Golem": {"habilidade": 5, "energia": 15}
     }
 
-    inimigo_atual = "ORC"
+    inimigo_atual = random.choice(["ORC", "Golem"])
     # print(inimigo_atual)
 
-    if "ORC" in inimigo_atual:
-        print("Você encontrou um Orc!")
-        print(f'\nOrc\nHabilidade: {(inimigos[inimigo_atual]["habilidade"])}\nEnergia: {(inimigos[inimigo_atual]["energia"])}')
-        resposta = input("\nVocê deseja Lutar ou tentar correr? (Lutar/Correr)")
+    if "ORC" in inimigo_atual or "Golem" in inimigo_atual:
+        print(f"Você encontrou um {inimigo_atual.lower().capitalize()}!")
+        print(f'\n{inimigo_atual}\nHabilidade: {(inimigos[inimigo_atual]["habilidade"])}\nEnergia: {(inimigos[inimigo_atual]["energia"])}')
+        resposta = input("\nVocê deseja Lutar ou tentar correr? (Lutar/Correr)").lower()
         if resposta in ["lutar","correr"]:
             if resposta == "correr":
                 sorte = random.randint(1,6) + personagem["sorte"]
-                if sorte >= 12:
+                if sorte >= 15:
                     print("\nVocê dá sorte e consegue fugir")
                     fugiu = True
                 else: 
-                    print("\nVocê tropeça e não consegue correr. Lute")
+                    print("\nVocê tropeça e não consegue correr.")
                     fugiu = False
             if resposta == "lutar" or fugiu == False:
                 print(f"\nVocê está lutando contra {inimigo_atual.lower().capitalize()}")
             elif fugiu == True:
-                print("Continuar história...") #to-do    
+                print("Continuar história...") #fazer: terminar mecânica de fugir
                 return fugiu
     else:
-        print("Deu erro essa porra") #to-do 
+        print("Deu erro essa porra") #fazer: handle dos erros
     return inimigo_atual    
 
 def batalha(personagem, inimigo_atual):
@@ -45,23 +45,24 @@ def batalha(personagem, inimigo_atual):
         print("\nEscolha uma ação: (Atacar/Inventário)")
         acao = input("Digite a ação desejada: ").lower()
 
-        if acao == "atacar":
+        if acao == "atacar" or acao == "ataque":
             dano_jogador = personagem["habilidade"] + (random.randint(1,6)+random.randint(1,6))
-            dano_inimigo = (inimigos["ORC"]["habilidade"] + (random.randint(1,6)+random.randint(1,6)))
+            dano_inimigo = (inimigos[inimigo_atual]["habilidade"] + (random.randint(1,6)+random.randint(1,6)))
             # print("j", dano_jogador)
             # print("i", dano_inimigo)
 
             #Inimigo Ganha
             if dano_inimigo > dano_jogador and dano_inimigo !=0 :
-                print(f"O ataque do seu inimigo prevaleceu, te causando {dano_inimigo - dano_jogador} de dano")
+                print(f"\nO ataque do seu inimigo prevaleceu, te causando {dano_inimigo - dano_jogador} de dano")
                 personagem["energia"] -= (dano_inimigo - dano_jogador)
-            #Jogador Ganha
-            if dano_jogador >= dano_inimigo:
+            #Player Ganha
+            elif dano_jogador >= dano_inimigo:
+                print("Seu ataque prevaleceu")
                 print(f"\nVocê atacou o {inimigo_atual.lower().capitalize()} causando {dano_jogador - dano_inimigo + 1} de dano!")
-                inimigos[inimigo_atual]["energia"] -= dano_jogador
+                inimigos[inimigo_atual]["energia"] -= (dano_jogador - dano_inimigo + 1)
                 
 
-        elif acao == "inventário":
+        elif acao == "inventário" or acao == "inventario" or acao == "inv":
             print("\nEscolha um item para usar: ((1)Poção de Vida / (2)Poção de Sorte)")
             item = input("Digite o item desejado: ").lower()
 
@@ -76,7 +77,7 @@ def batalha(personagem, inimigo_atual):
         print(f"Seus stats atuais são:")
         print(ficha.ficha_formatada(personagem))
 
-        print(f'\nOrc\nHabilidade: {(inimigos[inimigo_atual]["habilidade"])}\nEnergia: {(inimigos[inimigo_atual]["energia"])}')
+        print(f'\n{inimigo_atual.lower().capitalize()}\nHabilidade: {(inimigos[inimigo_atual]["habilidade"])}\nEnergia: {(inimigos[inimigo_atual]["energia"])}')
 
         if inimigos[inimigo_atual]["energia"] <= 0:
             print(f"\nVocê derrotou o {inimigo_atual.lower().capitalize()}!")
