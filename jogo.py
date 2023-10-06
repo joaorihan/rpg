@@ -1,11 +1,18 @@
 import ficha
+import combate
 
 print("Bem-Vindo")
+input("Aperte Enter para começar a jogar")
+jogando = True
 
 personagem = ficha.gerar_personagem()
-print(personagem["sorte"])
 
-personagem["sorte"] -= 1
+while jogando:
+    print("Vamos gerar os Stats do seu personagem.\n")    
+    ficha_formatada = ficha.ficha_formatada(personagem)
 
-print(personagem["sorte"])
+    print(ficha_formatada)
+    input()
 
+print("Fim do Jogo")    
+    
