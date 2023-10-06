@@ -3,12 +3,12 @@ inimigos = {
              "energia" : 7
             #  , 
             #  "ataque" : inimigos["ORC"]["habilidade"] + (random.randint(0,6)+random.randint(0,6))
-             }, 
+#              }, 
    
-   "Golem de Gelo" : {"habilidade" : 6, 
-                       "energia" : 12
-                    #    ,
-                    #    "ataque" : inimigos["ORC"]["habilidade"] + (random.randint(0,6)+random.randint(0,6))
+#    "Golem de Gelo" : {"habilidade" : 6, 
+#                        "energia" : 12
+#                     #    ,
+#                     #    "ataque" : inimigos["ORC"]["habilidade"] + (random.randint(0,6)+random.randint(0,6))
                        }
     }
 
@@ -33,6 +33,12 @@ def encontrou_inimigo_fraco(personagem):
                     fugiu = False
             if resposta == "lutar" or fugiu == False:
                 print(f"Você está lutando contra {inimigo_atual[0]}")
+            elif fugiu == True:
+                print("Continuar história...") #to-do    
+                return fugiu
+    else:
+        print("Deu erro essa porra") #to-do 
+    return inimigo_atual    
 
 
 
@@ -46,5 +52,4 @@ def ataques(personagem):
     if ataque_jogador >= ataque_inimigo:
         print(f"\n\nSeu ataque prevaleceu\nEle causa um dano de {ataque_jogador}")
         inimigos["ORC"]["energia"] -= ataque_jogador
-
-    
+        #to-do  
