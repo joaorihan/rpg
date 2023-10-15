@@ -1,15 +1,15 @@
-
-def encontrou_inimigo_fraco(personagem):
+def encontrou_inimigo(personagem, inimigo_atual):
     import random
-    inimigos = {
-        "ORC": {"habilidade": 7, "energia": 7},
-                "Golem": {"habilidade": 5, "energia": 15}
-    }
+    import json
 
-    inimigo_atual = random.choice(["ORC", "Golem"])
+    inimigos = {}
+
+    with open('./inimigos_root.json', 'r', encoding="utf-8") as arquivo:
+        inimigos = json.loads(arquivo.read())
+
     # print(inimigo_atual)
 
-    if "ORC" in inimigo_atual or "Golem" in inimigo_atual:
+    if inimigo_atual != "":
         print(f"Você encontrou um {inimigo_atual.lower().capitalize()}!")
         print(f'\n{inimigo_atual}\nHabilidade: {(inimigos[inimigo_atual]["habilidade"])}\nEnergia: {(inimigos[inimigo_atual]["energia"])}')
         resposta = input("\nVocê deseja Lutar ou tentar correr? (Lutar/Correr)").lower()
@@ -34,12 +34,15 @@ def encontrou_inimigo_fraco(personagem):
 def batalha(personagem, inimigo_atual):
     import random
     import ficha
+    import json
+    
     batalhando = True
 
-    inimigos = {
-        "ORC": {"habilidade": 7, "energia": 7},
-                "Golem": {"habilidade": 5, "energia": 12}
-    }
+    inimigos = {}
+
+    with open('./inimigos_root.json', 'r', encoding="utf-8") as arquivo:
+        inimigos = json.loads(arquivo.read())
+
 
     while batalhando:
         print("\nEscolha uma ação: (Atacar/Inventário)")
@@ -48,8 +51,7 @@ def batalha(personagem, inimigo_atual):
         if acao == "atacar" or acao == "ataque":
             dano_jogador = personagem["habilidade"] + (random.randint(1,6)+random.randint(1,6))
             dano_inimigo = (inimigos[inimigo_atual]["habilidade"] + (random.randint(1,6)+random.randint(1,6)))
-            # print("j", dano_jogador)
-            # print("i", dano_inimigo)
+            
 
             #Inimigo Ganha
             if dano_inimigo > dano_jogador and dano_inimigo !=0 :
@@ -85,22 +87,8 @@ def batalha(personagem, inimigo_atual):
 
         if personagem["energia"] <= 0:
             print(f"\nVocê não tem mais energia e morre derrotado pelo {inimigo_atual.lower().capitalize()}!")
-            break
+            morreu = True
+            return morreu
+                
 
     return personagem, inimigos
-
-
-# def ataques(personagem):
-#     inimigos = {
-#     "ORC" : {"habilidade" : 7, 
-#              "energia" : 7}
-#     }
-#     import random
-#     print("Você e seu inimigo trocam golpes.")
-#     ataque_inimigo = (inimigos["ORC"]["habilidade"] + (random.randint(1,6)+random.randint(1,6)))
-#     ataque_jogador = (personagem["habilidade"] + (random.randint(1,6)+random.randint(1,6)))
-#     print(f"Seu ataque é {ataque_jogador}")
-#     if ataque_jogador >= ataque_inimigo:
-#         print(f"\n\nSeu ataque prevaleceu\nEle causa um dano de {ataque_jogador}")
-#         inimigos["ORC"]["energia"] -= ataque_jogador
-#        to-do
