@@ -489,6 +489,7 @@ while vitoria == False and morte == False and personagem_ficha["energia"] > 0:
                 print("vá para rota 202")
         if capitulos[cap] == cap28:
             personagem_ficha["habilidade"] = personagem_ficha["habilidade"] + 1
+            prox_capitulo = [20, 48]
         if  capitulos[cap] == cap33:
             personagem_ficha["habilidade"] = personagem_ficha["habilidade"] - 3
         if capitulos[cap] == cap36:
@@ -502,7 +503,7 @@ while vitoria == False and morte == False and personagem_ficha["energia"] > 0:
         if capitulos[cap] == cap38:
             personagem_ficha["energia"] = personagem_ficha["energia"] - 3
             if personagem_ficha["energia"] <= 0:
-                print('você está morto')
+                morte = True
                 break
         if capitulos[cap] == cap39: #mosca
             inimigo_atual = "Mosca Gigante"
@@ -515,7 +516,7 @@ while vitoria == False and morte == False and personagem_ficha["energia"] > 0:
         if capitulos[cap] == cap42:
             personagem_ficha["energia"] = personagem_ficha["energia"] - 5
             if personagem_ficha["energia"] <= 0:
-                print('você está morto')
+                morte = True
                 break
             soma = dado.dados() + dado.dados()
             continua= input("\nPressione enter para jogar os dados")
@@ -528,7 +529,7 @@ while vitoria == False and morte == False and personagem_ficha["energia"] > 0:
             personagem_ficha["energia"] = personagem_ficha["energia"] - 4
             personagem_ficha["habilidade"] = personagem_ficha["habilidade"] - 1
             if personagem_ficha["energia"] <= 0:
-                print('você está morto')
+                morte = True
                 break 
 
         if capitulos[cap] == cap51: 
@@ -539,7 +540,7 @@ while vitoria == False and morte == False and personagem_ficha["energia"] > 0:
         if capitulos[cap] == cap57:
             personagem_ficha["energia"] = personagem_ficha["energia"] - 4
             if personagem_ficha["energia"] <= 0:
-                print('você está morto')
+                morte = True
                 break 
         if capitulos[cap] == cap58:
             soma = dado.dados() + dado.dados()
@@ -577,7 +578,7 @@ while vitoria == False and morte == False and personagem_ficha["energia"] > 0:
         if capitulos[cap] == cap103:
             personagem_ficha["energia"] = personagem_ficha["energia"] - 3
             if personagem_ficha["energia"] <= 0:
-                print('você está morto')
+                morte = True
                 break 
         if capitulos[cap] == cap105:
             loot = "Taça"
@@ -590,7 +591,7 @@ while vitoria == False and morte == False and personagem_ficha["energia"] > 0:
         if capitulos[cap] == cap115:
             personagem_ficha["energia"] = personagem_ficha["energia"] - 3
             if personagem_ficha["energia"] <= 0:
-                print('você está morto')
+                morte = True
                 break 
         if capitulos[cap] == cap123:
             loot = "Amuleto de Força"
@@ -620,7 +621,7 @@ while vitoria == False and morte == False and personagem_ficha["energia"] > 0:
             azar = dado.dados() + 1
             personagem_ficha["energia"] = personagem_ficha["energia"] - azar
             if personagem_ficha["energia"] <= 0:
-                print('você está morto')
+                morte = True
                 break 
         if capitulos[cap] == cap133:
             resul = dado.dados() + dado.dados()
@@ -631,7 +632,7 @@ while vitoria == False and morte == False and personagem_ficha["energia"] > 0:
         if  capitulos[cap] == cap139:
             personagem_ficha["energia"] = personagem_ficha["energia"] - 2
             if personagem_ficha["energia"] <= 0:
-                print('você está morto')
+                morte = True
                 break 
             else:
                 inimigo_atual = "Erva"
@@ -700,7 +701,7 @@ while vitoria == False and morte == False and personagem_ficha["energia"] > 0:
             personagem_ficha["habilade"] = personagem_ficha["habilidade"] - 1
             personagem_ficha["energia"] = personagem_ficha["energia"] - 4
             if personagem_ficha["energia"] <= 0:
-                print('você está morto')
+                morte = True
                 break
         if capitulos[cap] == cap162: 
             personagem_ficha["sorte"] = personagem_ficha["sorte"] + 1
@@ -721,12 +722,12 @@ while vitoria == False and morte == False and personagem_ficha["energia"] > 0:
         if capitulos[cap] == cap167:
             personagem_ficha["energia"] = personagem_ficha["energia"] - 4
             if personagem_ficha["energia"] <= 0:
-                print('você está morto')
+                morte = True
                 break
         if capitulos[cap] == cap171:
             personagem_ficha["energia"] = personagem_ficha["energia"] - 4
             if personagem_ficha["energia"] <= 0:
-                print('você está morto')
+                morte = True
                 break
         if capitulos[cap] == cap172:
             print('')            
@@ -753,7 +754,7 @@ while vitoria == False and morte == False and personagem_ficha["energia"] > 0:
         if capitulos[cap] == cap179:
             personagem_ficha["energia"] = personagem_ficha["energia"] - 2
             if personagem_ficha["energia"] <= 0:
-                print('você está morto')
+                morte = True
                 break
         if capitulos[cap] == cap180:
             testesorte = dado.dados() + dado.dados()
@@ -785,7 +786,7 @@ while vitoria == False and morte == False and personagem_ficha["energia"] > 0:
         if capitulos[cap] == cap190:
             personagem_ficha["energia"] = personagem_ficha["energia"] - 3
             if personagem_ficha["energia"] <= 0:
-                print('você está morto')
+                morte = True
                 break
         if capitulos[cap] == cap191:         
             soma = dado.dados() + dado.dados()
@@ -796,7 +797,7 @@ while vitoria == False and morte == False and personagem_ficha["energia"] > 0:
         if capitulos[cap] == cap195:
             personagem_ficha["energia"] = personagem_ficha["energia"] - 1
             if personagem_ficha["energia"] <= 0:
-                print('você está morto')
+                morte = True
                 break
         if capitulos[cap] == cap196:
             print()
@@ -807,7 +808,7 @@ while vitoria == False and morte == False and personagem_ficha["energia"] > 0:
             personagem_ficha["energia"] = personagem_ficha["energia"] - 2
             personagem_ficha["sorte"] = personagem_ficha["sorte"] - 1
             if personagem_ficha["energia"] <= 0:
-                print('você está morto')
+                morte = True
                 break 
         if capitulos[cap] == cap202:
             testesorte = dado.dados() + dado.dados()
@@ -818,7 +819,7 @@ while vitoria == False and morte == False and personagem_ficha["energia"] > 0:
                 print("Volte para 42")
         if capitulos[cap] == cap203:
             print()
-            inimigo_atual = "Diabo do Posso"
+            inimigo_atual = "Diabo do Poço"
             combate.encontrou_inimigo(personagem_ficha, inimigo_atual)
             combate.batalha(personagem_ficha, inimigo_atual)
         if capitulos[cap] == cap204:
@@ -831,13 +832,13 @@ while vitoria == False and morte == False and personagem_ficha["energia"] > 0:
         if capitulos[cap] == cap207:
             personagem_ficha["energia"] = personagem_ficha["energia"] - 3
             if personagem_ficha["energia"] <= 0:
-                print('você está morto')
+                morte = True
                 break 
         
         if capitulos[cap] == cap215:
             personagem_ficha["energia"] = personagem_ficha["energia"] - 2
             if personagem_ficha["energia"] <= 0:
-                print('você está morto')
+                morte = True
                 break 
 
         if capitulos[cap] == cap223:
@@ -846,7 +847,7 @@ while vitoria == False and morte == False and personagem_ficha["energia"] > 0:
             continua= input("\nPressione enter para jogar os dados")
             personagem_ficha["energia"] = personagem_ficha["energia"] - soma
             if personagem_ficha["energia"] <= 0:
-                print('você está morto')
+                morte = True
                 break 
         if capitulos[cap] == cap225:
             inimigo_atual = "Besta Sangrenta"
@@ -871,7 +872,7 @@ while vitoria == False and morte == False and personagem_ficha["energia"] > 0:
         if capitulos[cap] == cap235:
             personagem_ficha["energia"] = personagem_ficha["energia"] - 2
             if personagem_ficha["energia"] <= 0:
-                print('você está morto')
+                morte = True
                 break 
         
         if capitulos[cap] == cap236:
@@ -896,7 +897,7 @@ while vitoria == False and morte == False and personagem_ficha["energia"] > 0:
             continua= input("\nPressione enter para jogar os dados")
             personagem_ficha["energia"] = personagem_ficha["energia"] - soma
             if personagem_ficha["energia"] <= 0:
-                print('você está morto')
+                morte = True
                 break 
         
         if capitulos[cap] == cap247:
@@ -907,12 +908,12 @@ while vitoria == False and morte == False and personagem_ficha["energia"] > 0:
             continua= input("\nPressione enter para jogar os dados")
             personagem_ficha["energia"] = personagem_ficha["energia"] - soma
             if personagem_ficha["energia"] <= 0:
-                print('você está morto')
+                morte = True
                 break 
         if capitulos[cap] == cap249:
             personagem_ficha["energia"] = personagem_ficha["energia"] - dado.dados() - 1
             if personagem_ficha["energia"] <= 0:
-                print('você está morto')
+                morte = True
                 break 
         if capitulos[cap] == cap256:
             loot = "Poção de Réplica"
@@ -952,7 +953,7 @@ while vitoria == False and morte == False and personagem_ficha["energia"] > 0:
             personagem_ficha["habilidade"] = personagem_ficha["habilidade"] - 1
             personagem_ficha["energia"] = personagem_ficha["energia"] - 2
             if personagem_ficha["energia"] <= 0:
-                print('você está morto')
+                morte = True
                 break 
 
         if capitulos[cap] == cap286:
@@ -961,7 +962,7 @@ while vitoria == False and morte == False and personagem_ficha["energia"] > 0:
         if capitulos[cap] == cap287:
             personagem_ficha["energia"] = personagem_ficha["energia"] - 1 - dado.dados()
             if personagem_ficha["energia"] <= 0:
-                print('você está morto')
+                morte = True
                 break 
 
         if capitulos[cap] == cap289:
@@ -1006,7 +1007,7 @@ while vitoria == False and morte == False and personagem_ficha["energia"] > 0:
         if capitulos[cap] == cap304:
             personagem_ficha["energia"] = personagem_ficha["energia"] - 6
             if personagem_ficha["energia"] <= 0:
-                print('você está morto')
+                morte = True
                 break
         
         if capitulos[cap] == cap306:
@@ -1022,7 +1023,7 @@ while vitoria == False and morte == False and personagem_ficha["energia"] > 0:
         if capitulos[cap] == cap309:
             personagem_ficha["energia"] = personagem_ficha["energia"] - 3
             if personagem_ficha["energia"] <= 0:
-                print('você está morto')
+                morte = True
                 break
             testesorte = dado.dados() + dado.dados()
             if testesorte < personagem_ficha["sorte"]:
@@ -1048,7 +1049,7 @@ while vitoria == False and morte == False and personagem_ficha["energia"] > 0:
         if capitulos[cap] == cap330:
             personagem_ficha["energia"] = personagem_ficha["energia"] - 1
             if personagem_ficha["energia"] <= 0:
-                print('você está morto')
+                morte = True
                 break
         
         if capitulos[cap] == cap331:
@@ -1082,13 +1083,13 @@ while vitoria == False and morte == False and personagem_ficha["energia"] > 0:
         if capitulos[cap] == cap339:
             personagem_ficha["energia"] = personagem_ficha["energia"] - 1
             if personagem_ficha["energia"] <= 0:
-                print('você está morto')
+                morte = True
                 break
 
         if capitulos[cap] == cap343:
             personagem_ficha["energia"] = personagem_ficha["energia"] - 1
             if personagem_ficha["energia"] <= 0:
-                print('você está morto')
+                morte = True
                 break
 
         if capitulos[cap] == cap348:
@@ -1099,7 +1100,7 @@ while vitoria == False and morte == False and personagem_ficha["energia"] > 0:
                 print("vá para 159")
 
         if capitulos[cap] == cap349:
-            inimigo_atual = "Diabo do Posso"
+            inimigo_atual = "Diabo do Poço"
             combate.encontrou_inimigo(personagem_ficha, inimigo_atual)
             combate.batalha(personagem_ficha, inimigo_atual)
             
@@ -1107,14 +1108,14 @@ while vitoria == False and morte == False and personagem_ficha["energia"] > 0:
         if capitulos[cap] == cap350:
             personagem_ficha["energia"] = personagem_ficha["energia"] - dado.dados()
             if personagem_ficha["energia"] <= 0:
-                print('você está morto')
+                morte = True
                 break
         
         if capitulos[cap] == cap353:
             personagem_ficha["habilidade"] = personagem_ficha["habilidade"] - 1
             personagem_ficha["energia"] = personagem_ficha["energia"] - 4
             if personagem_ficha["energia"] <= 0:
-                print('você está morto')
+                morte = True
                 break
         
         if capitulos[cap] == cap354:
@@ -1128,7 +1129,7 @@ while vitoria == False and morte == False and personagem_ficha["energia"] > 0:
         if capitulos[cap] == cap358:
             personagem_ficha["energia"] = personagem_ficha["energia"] - 2
             if personagem_ficha["energia"] <= 0:
-                print('você está morto')
+                morte = True
                 break
             
         if capitulos[cap] == cap361:
@@ -1184,7 +1185,7 @@ while vitoria == False and morte == False and personagem_ficha["energia"] > 0:
         if capitulos[cap] == cap377:
             personagem_ficha["energia"] = personagem_ficha["energia"] - 5
             if personagem_ficha["energia"] <= 0:
-                print('você está morto')
+                morte = True
                 break
         if capitulos[cap] == cap378:
             testesorte = dado.dados() + dado.dados()
@@ -1223,18 +1224,18 @@ while vitoria == False and morte == False and personagem_ficha["energia"] > 0:
             unluck = dado.dados() + 1
             personagem_ficha["energia"] = personagem_ficha["energia"] - unluck
             if personagem_ficha["energia"] <= 0:
-                print('você está morto')
+                morte = True
                 break
         if capitulos[cap] == cap394:
             unluck = dado.dados() + 2
             personagem_ficha["energia"] = personagem_ficha["energia"] - unluck
             if personagem_ficha["energia"] <= 0:
-                print('você está morto')
+                morte = True
                 break
         if capitulos[cap] == cap395:
             personagem_ficha["energia"] = personagem_ficha["energia"] - 3
             if personagem_ficha["energia"] <= 0:
-                print('você está morto')
+                morte = True
                 break
             
         if capitulos[cap] == cap397:
@@ -1243,20 +1244,18 @@ while vitoria == False and morte == False and personagem_ficha["energia"] > 0:
         if capitulos[cap] == cap399:
             personagem_ficha["energia"] = personagem_ficha["energia"] + 3
         
-
-
-        continua= input("\nPressione enter para continuar")
-        print("qual foi a sua rota?")
-        cap = int(input("> "))
-        continua= input("\nPressione enter para continuar")
-
-       
-
-
         if capitulos[cap] in array_capitulos_que_morrem:
             morte = True
         if cap == 400:
             vitoria = True
+
+        while cap not in prox_capitulo:
+            continua= input("\nPressione enter para continuar")
+            print("\nQual foi a sua rota?")
+            cap = int(input("> "))
+            continua= input("\nPressione enter para continuar")
+
+    
         
 if vitoria == True:
     print(cap400)
@@ -1264,7 +1263,4 @@ if vitoria == True:
     print('você conseguiu a experiência necessária e ganhou o jogo.')   
 if morte == True:
     print(capitulos[cap])
-    print('\nDesculpe, mas você morreu durante o jogo.\n')
-
-
-
+    print(f'\nVocê está morto, {nomepersonagem}!\nFim de Jogo!')
