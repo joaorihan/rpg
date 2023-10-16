@@ -404,7 +404,6 @@ cap396 = "Você faz um laço com a corda, gira-o acima de si e o lança na cabe�
 cap397 = "O líquido é uma poção mágica que lhe permitirá detectar armadilhas ocultas. Some 2 pontos de SORTE. Se ainda não o fez, você pode abrir o livro vermelho – volte para 52. Do contrário, você terá que continuar para o norte com Throm - volte para 369."
 cap398 = "Embora não haja qualquer armadilha evidente, você tem a forte sensação de que a arca contém um perigo oculto. A Poção de Detecção de Armadilha está funcionando bem. Você pára de um dos lados da arca e levanta a tampa com a espada, esticando o braço para mantê-la a distância. Quando a tampa se ergue, uma bola de ferro presa a um cordão é atirada para trás e quebra uma cápsula de vidro que está fixada no lado de dentro da tampa, instantaneamente liberando um gás. Felizmente, você tem tempo de pular para trás sem inalar os vapores venenosos. Quando o gás se dissipa, você caminha até a arca e olha dentro dela. Uma corrente com um pingente está jogada no fundo, mas alguém já tirou a jóia que havia nele. Você fica tão aborrecido que joga a corrente no chão e sai do aposento, furioso, para o túnel. Volte para 230."
 cap399 = "O pão contém ervas curativas secretas dos elfos. Some 3 pontos de ENERGIA. Sentindo-se triste, embora forte, você guarda o espelho e o amuleto, saindo da caverna para seguir para o norte. Volte para 192."
-vitoria = False
 cap400 = "Logo que você aparece na saída do túnel, uma multidão grita e vibra. As pessoas abrem alas para que você siga na direção de um pequeno palanque, no qual, sentado embaixo de um pára- sol de bambu colorido, está o Barão Sukumvit. Ele parece apalermado, como se jamais esperasse que alguém conseguisse sair vivo do Calabouço da Morte. O segredo de Fang foi revelado. Quando o Barão se levanta da cadeira, você sobe os degraus do palanque, inclina-se diante dele e observa aqueles olhos frios fixos em você em completo espanto. Você sorri meio sem graça quando ele lhe oferece a mão estendida. Em meio ao barulho ensurdecedor da ovação do povo de Fang, o Barão Sukumvit abre o cofre que contém seu prêmio de 10.000 Peças de Ouro. Em seguida, ele coloca uma coroa de louros sobre a sua cabeça e o proclama Campeão do Calabouço da Morte."
 
 cap = 1
@@ -417,12 +416,13 @@ inimigo_atual = ""
 
 array_capitulos_que_morrem = [cap2, cap3, cap4, cap7, cap8, cap17, cap19, cap34, cap44, cap61, cap70, cap85, cap96, cap140, cap193, cap101, cap116, cap219, cap193, cap233, cap255, cap268, cap272, cap276, cap317, cap325, cap333, cap334, cap347, cap359, cap366, cap372]
 morte = False
+vitoria = False
 
 input("Aperte Enter para começar a jogar ")
 
 
 print("Bem-vindo(a) ao jogo ao Calabouço da Morte")
-print("Diga-me seu nome, herói: ")
+print("\nDiga-me seu nome, herói: ")
 nomepersonagem = input ("> ")
 
 personagem_ficha = ficha.gerar_personagem()
@@ -489,7 +489,6 @@ while vitoria == False and morte == False and personagem_ficha["energia"] > 0:
                 print("vá para rota 202")
         if capitulos[cap] == cap28:
             personagem_ficha["habilidade"] = personagem_ficha["habilidade"] + 1
-            prox_capitulo = [20, 48]
         if  capitulos[cap] == cap33:
             personagem_ficha["habilidade"] = personagem_ficha["habilidade"] - 3
         if capitulos[cap] == cap36:
@@ -1246,14 +1245,14 @@ while vitoria == False and morte == False and personagem_ficha["energia"] > 0:
         
         if capitulos[cap] in array_capitulos_que_morrem:
             morte = True
+
         if cap == 400:
             vitoria = True
 
-        while cap not in prox_capitulo:
-            continua= input("\nPressione enter para continuar")
-            print("\nQual foi a sua rota?")
-            cap = int(input("> "))
-            continua= input("\nPressione enter para continuar")
+        continua= input("\nPressione enter para continuar")
+        print("\nQual foi a sua rota?")
+        cap = int(input("> "))
+        continua= input("\nPressione enter para continuar")
 
     
         
@@ -1261,6 +1260,7 @@ if vitoria == True:
     print(cap400)
     print(f'\nParabens {nomepersonagem}!\n')
     print('você conseguiu a experiência necessária e ganhou o jogo.')   
+    
 if morte == True:
     print(capitulos[cap])
     print(f'\nVocê está morto, {nomepersonagem}!\nFim de Jogo!')
